@@ -1,0 +1,30 @@
+.Register {
+    padding: 20px;
+    width: 100vw;
+}
+
+.Register .Form {
+    padding-left: 20px;
+    width: 80vw;
+}
+
+.Register input {
+    width: 100%;
+    height: 40px;
+}
+
+.Register button {
+    cursor: pointer;
+    position: fixed;
+    bottom: 40px;
+    right: 40px; 
+    background-color: #A050C6;
+    width: 40%;
+    height: 40px;
+    border-radius: 30px;
+  }
+  
+  .Register button:hover {
+    background: #4d1766;
+    color: white;
+  }

@@ -1,6 +1,7 @@
 import './App.css';
 import React from "react";
 import { BrowserRouter } from 'react-router-dom';
+import Register from './Register';
 
 const App = props => (
     <div className="App">
@@ -12,7 +13,7 @@ const App = props => (
         </div>
 
         <BrowserRouter>
-            {/* pages */}
+            <Register/>
         </BrowserRouter>
     </div>
 )
