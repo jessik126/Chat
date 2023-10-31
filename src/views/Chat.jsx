@@ -9,6 +9,15 @@ const Chat = props => (
             <button>Sair</button>
         </div>
         <div className="Messages">
+            <Message Name="João" Message="Oiaheuhaiuheauiheaiuheuai eauiheaiuhea iheaiuheiuhae iuheauiehiuae iuaheuiaheu iuehauiheiauhe heuaiheiuaheihea ieauiehaiu" />
+            <Message Name="João" Message="Oiaheuhaiuheauiheaiuheuai eauiheaiuhea iheaiuheiuhae iuheauiehiuae iuaheuiaheu iuehauiheiauhe heuaiheiuaheihea ieauiehaiu" />
+            <Message Name="João" Message="Oiaheuhaiuheauiheaiuheuai eauiheaiuhea iheaiuheiuhae iuheauiehiuae iuaheuiaheu iuehauiheiauhe heuaiheiuaheihea ieauiehaiu" />
+            <Message Name="João" Message="Oiaheuhaiuheauiheaiuheuai eauiheaiuhea iheaiuheiuhae iuheauiehiuae iuaheuiaheu iuehauiheiauhe heuaiheiuaheihea ieauiehaiu" />
+            <Message Name="Maria" Message="Oie" />
+            <Message Name="Ana" Message="Olá" />
+            <Message Name="João" Message="Oi" />
+            <Message Name="Maria" Message="Oie" />
+            <Message Name="Ana" Message="Olá" />
         </div>
         <div className="Footer">
             <input type="text" placeholder=" mensagem" />
