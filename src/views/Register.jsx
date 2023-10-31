@@ -3,14 +3,18 @@ import './Register.css'
 
 const Register = props => (
     <div className="Register">
-        <h1>
-            Cadastro
-        </h1>
+        <div className="Title">
+            <h1>
+                Cadastro
+            </h1>
+        </div>
         <div className="Form">
             <h3>Nome</h3>
-            <input type="text" />
+            <input type="text" placeholder=" nome"/>
             <br />
-            <button>Enter</button>
+        </div>
+        <div className="Footer">
+            <button>Entrar</button>
         </div>
     </div>
 )
