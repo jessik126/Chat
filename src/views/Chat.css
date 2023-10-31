@@ -5,24 +5,23 @@
 
 .Chat button {
     width: 30%;
-    height: 40px;
-    cursor: pointer;
 }
 
 .Chat .Title {
-    width: 100%;
-    position: relative;
-}
-
-.Chat .Title button { 
-    position: absolute;
-    top: 20px;
-    right: 10px;
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .Chat .Messages {
     height: 300px;
-    padding: 30px;
+    margin: 30px;
+    padding: 10px;
+    
+    background-color: #a050c61a;
+    border: 3px solid transparent;
+
     overflow-y: auto;
     scroll-behavior: smooth;
     word-wrap: break-word;
@@ -30,7 +29,7 @@
 
 .Chat .Footer {
     width: 90%;
-    padding-bottom: 30px;
+    padding: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
