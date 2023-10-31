@@ -1,0 +1,42 @@
+.Chat {
+    padding: 20px;
+    width: 100%;
+}
+
+.Chat button {
+    width: 30%;
+    height: 40px;
+    cursor: pointer;
+}
+
+.Chat .Title {
+    width: 100%;
+    position: relative;
+}
+
+.Chat .Title button { 
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.Chat .Messages {
+    height: 300px;
+    padding: 30px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    word-wrap: break-word;
+}
+
+.Chat .Footer {
+    width: 90%;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Chat .Footer input {
+    margin-right: 10px;
+    width: 60%
+}
