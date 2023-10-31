@@ -20,4 +20,5 @@
 .Register button {
     width: 50%;
     height: 40px;   
+    cursor: pointer;
   }

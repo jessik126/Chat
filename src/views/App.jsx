@@ -14,8 +14,8 @@ const App = props => (
         </div>
 
         <BrowserRouter>
-            {/* <Register /> */}
-            <Chat/>
+            <Register />
+            {/* <Chat/> */}
         </BrowserRouter>
     </div>
 )
