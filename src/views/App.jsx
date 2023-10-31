@@ -1,8 +1,7 @@
 import './App.css';
 import React from "react";
 import { BrowserRouter } from 'react-router-dom';
-import Register from './Register';
-import Chat from './Chat';
+import Content from './Content';
 
 const App = props => (
     <div className="App">
@@ -14,8 +13,7 @@ const App = props => (
         </div>
 
         <BrowserRouter>
-            <Register />
-            {/* <Chat/> */}
+            <Content/>
         </BrowserRouter>
     </div>
 )

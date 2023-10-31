@@ -2,11 +2,15 @@ import React from "react";
 import './Chat.css'
 import Message from "../components/Message";
 
+import { Link } from 'react-router-dom'
+
 const Chat = props => (
     <div className="Chat">
         <div className="Title">
             <h1>Broadcast</h1>
-            <button>Sair</button>
+            <button>
+                <Link to="/">Sair</Link>
+            </button>
         </div>
         <div className="Messages">
             <Message Name="João" Message="Oiaheuhaiuheauiheaiuheuai eauiheaiuhea iheaiuheiuhae iuheauiehiuae iuaheuiaheu iuehauiheiauhe heuaiheiuaheihea ieauiehaiu" />
