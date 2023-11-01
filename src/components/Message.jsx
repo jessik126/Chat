@@ -3,10 +3,10 @@ import './Message.css'
 
 const Message = props => (
     <div className="Message">
-        <p><strong>{props.Name}:</strong></p>
-        <p>{props.Message}</p>
+        <p><strong>{props.name}:</strong></p>
+        <p>{props.message}</p>
         <br/>
     </div>
 )
 
-export default Message;
+export default Message
