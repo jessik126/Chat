@@ -1,24 +1,35 @@
 import express from 'express'
-import cors from 'cors'
-// Porta do servidor
+import userRouter from './routers/user-router'
+
+// Server
 const PORT = process.env.PORT || 4000
-// Host do servidor
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
-// App Express
+
 const app = express()
-// Endpoint raiz
-app.get('/', (req, res) => {
-    res.send('Bem-vindo!')
-})
+const cors = require('cors');
+
 // Cors
 app.use(cors({
-    origin: ['http://localhost:3000']
+    origin: ['http://localhost:3000'] //frontend
 }))
-// Resposta padrão para quaisquer outras requisições:
+
+// JSON
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+
+app.get('/', (req, res) => {
+    res.send('Welcome!')
+})
+
+// Routes
+app.use('/api', userRouter)
 app.use((req, res) => {
     res.status(404)
 })
-// Inicia o sevidor
+
+
+// Start server
 app.listen(PORT, () => {
-    console.log(`Servidor rodando com sucesso ${HOSTNAME}:${PORT}`)
+    console.log(`Working server: ${HOSTNAME}:${PORT}`)
 })
