@@ -1,10 +1,11 @@
 import express, { Request, Response, Router } from "express";
 import { Message } from "../models/message";
+import { User } from "../models/user";
 
 const router: Router = express.Router();
 
 router.get("/messages", async (req: Request, res: Response): Promise<Response> => {
-    const allMessages: Message[] = await Message.findAll();
+    const allMessages: Message[] = await Message.findAll({include: [User]});
     return res.status(200).json(allMessages);
 });
 

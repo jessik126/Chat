@@ -1,26 +1,49 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import './Chat.css'
 import Message from "../components/Message";
 
 import { Link, useLocation } from 'react-router-dom'
-import messageData from "../data/messageData";
+//import messageData from "../data/messageData";
 
 const Chat = props => {
-    const location = useLocation();
+    let location = useLocation();
 
-    let [messages, setMessages] = useState(messageData);
+    const api = 'http://localhost:4000/';
+    const apiMessage = api + 'messages/'
+    const apiUser = api + 'users/'
+
+
+
+    let [messages, setMessages] = useState([]);
     let [textMessage, setTextMessage] = useState("");
+
+    useEffect(() => {
+        fetch(apiMessage)
+            .then(response => response.json())
+            .then(messages => setMessages(messages));
+    }, []);
 
     function whenChangeTextMessage(e) {
         setTextMessage(e.target.value);
     }
 
+    function saveMessage() {
+        fetch(apiMessage, {
+            method: 'POST',
+            body: JSON.stringify({
+                userId: location.state?.userId ?? 1, //TODO: understand this error
+                text: textMessage
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+    }
+
     function sendMessage() {
         let id = messages.length + 1;
-        let m = { id: id, name: location.state.name, text: textMessage };
 
-        messages.push(m);
-        setMessages(messages);
+        saveMessage();
         setTextMessage("");
 
         scrollToBottom();
@@ -32,8 +55,9 @@ const Chat = props => {
                 <div key={i}>
                     <Message
                         id={m.id}
-                        name={m.name}
+                        name={m.user?.name}
                         message={m.text}
+                        datetime={m.datetime}
                     />
                 </div>
             )
@@ -48,7 +72,7 @@ const Chat = props => {
 
     const messagesEndRef = useRef(null)
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({behavior: "smooth", block: "end", inline: "end"})
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" })
     }
 
     return (

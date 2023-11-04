@@ -1,4 +1,5 @@
-import { Table, Model, Column, DataType, CreatedAt, UpdatedAt, DeletedAt } from "sequelize-typescript";
+import { Table, Model, Column, DataType, HasMany, Default } from "sequelize-typescript";
+import { Message } from "./message";
 
 @Table({
   timestamps: false,
@@ -10,4 +11,14 @@ export class User extends Model<User> {
     allowNull: false,
   })
   name!: string;
+
+  @Default(new Date())
+  @Column({
+    type: DataType.DATE,
+    allowNull: true,
+  })
+  datetime!: Date;
+
+  @HasMany(() => Message)
+  messages?: Message[];
 }
