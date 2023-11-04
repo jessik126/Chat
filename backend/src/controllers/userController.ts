@@ -1,54 +1,37 @@
-import { Request, Response, NextFunction } from 'express';
-import User from '../models/user';
-import userRepository from '../repositories/userRepository';
+import express, { Request, Response, Router } from "express";
+import { User } from "../models/user";
 
-async function getUser(req: Request, res: Response, next: NextFunction) {
-    const id = req.params.id;
-    const user = await userRepository.getUser(parseInt(id));
-    if (user)
-        res.json(user);
-    else
-        res.sendStatus(404);
-}
+const router: Router = express.Router();
 
-async function getUsers(req: Request, res: Response, next: NextFunction) {
-    const users = await userRepository.getUsers();
-    res.json(users);
-}
+router.get("/users", async (req: Request, res: Response): Promise<Response> => {
+    const allUsers: User[] = await User.findAll();
+    return res.status(200).json(allUsers);
+});
 
-async function postUser(req: Request, res: Response, next: NextFunction) {
-    const user = req.body as User;
-    console.debug(user);
-    const result = await userRepository.addUser(user);
-    if (result)
-        res.status(201).json(result);
-    else
-        res.sendStatus(400).json(result);
-}
+router.get("/users/:id", async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+    const user: User | null = await User.findByPk(id);
+    return res.status(200).json(user);
+});
 
-async function patchUser(req: Request, res: Response, next: NextFunction) {
-    const id = req.params.id;
-    const user = req.body as User;
-    const result = await userRepository.updateUser(parseInt(id), user);
-    if (result)
-        res.json(result);
-    else
-        res.sendStatus(404);
-}
+router.post("/users", async (req: Request, res: Response): Promise<Response> => {
+    const user: User = await User.create({ ...req.body });
+    return res.status(201).json(user);
+});
 
-async function deleteUser(req: Request, res: Response, next: NextFunction) {
-    const id = req.params.id;
-    const success = await userRepository.deleteUser(parseInt(id));
-    if (success)
-        res.sendStatus(204);
-    else
-        res.sendStatus(404);
-}
+router.put("/users/:id", async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+    await User.update({ ...req.body }, { where: { id } });
+    const updatedUser: User | null = await User.findByPk(id);
+    return res.status(200).json(updatedUser);
+});
 
-export default {
-    getUser,
-    getUsers,
-    postUser,
-    patchUser,
-    deleteUser
+router.delete("/users/:id", async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+    const deletedUser: User | null = await User.findByPk(id);
+    await User.destroy({ where: { id } });
+    return res.status(200).json(deletedUser);
 }
+);
+
+export default router;

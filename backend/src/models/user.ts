@@ -1,13 +1,13 @@
-export default class User {
-    id: number;
-    name: string;
-    message: string;
+import { Table, Model, Column, DataType, CreatedAt, UpdatedAt, DeletedAt } from "sequelize-typescript";
 
-    private static nextId = 1;
-
-    constructor(name: string, message: string) {
-        this.id = User.nextId++;
-        this.name = name;
-        this.message = message;
-    }
+@Table({
+  timestamps: false,
+  tableName: "users",
+})
+export class User extends Model<User> {
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  name!: string;
 }
